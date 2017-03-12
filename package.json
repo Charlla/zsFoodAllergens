@@ -1,6 +1,6 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
+  "name": "zsFoodAllergens",
+  "author": "Charl Lamprecht",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
