@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Deploy} from '@ionic/cloud-angular';
 
 import {
   NavController,
@@ -19,9 +20,23 @@ import { AllergenDetailPage } from '../allergen-detail/allergen-detail';
 export class HomePage {
   public allergenList: any;
 
-  constructor(public navCtrl: NavController, public allergenData: AllergenData,
+  constructor(public deploy: Deploy, public navCtrl: NavController, public allergenData: AllergenData,
     public actionCtrl: ActionSheetController, public platform: Platform,
     public authData: AuthData) {
+
+    if (this.platform.is('android') || this.platform.is('ios')){
+
+    this.deploy.check().then((snapshotAvailable: boolean) => {
+          if (snapshotAvailable) {
+          // When snapshotAvailable is true, you can apply the snapshot
+          this.deploy.download().then(() => {
+            return this.deploy.extract();
+          });
+
+      }
+
+    });
+}
 
     this.allergenList = this.allergenData.getAllergenList();
   }
