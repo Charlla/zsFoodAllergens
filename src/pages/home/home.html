@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Allergens
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="getIsUserSignedIn()" (click)="createAllergen()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+    <!-- <ion-list-header>
+      Allergens
+    </ion-list-header> -->
+    <ion-item *ngFor="let allergen of allergenList | async"
+      (click)="goToAllergen(allergen.$key)">
+      <ion-icon name="information-circle" color="favorite" item-left></ion-icon>
+      <h2>{{allergen.name}}</h2>
+      <h3>Description: <strong>{{allergen.description}}</strong></h3>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

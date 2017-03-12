@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>New Allergen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="newAllergenForm" (submit)="createAllergen()" novalidate>
+    <ion-item>
+      <ion-label stacked>Allergen Name</ion-label>
+      <ion-input #name formControlName="name" type="text" placeholder="What to call this allergen?"
+        [class.invalid]="!newAllergenForm.controls.name.valid && newAllergenForm.controls.name.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message"
+    *ngIf="!newAllergenForm.controls.name.valid && newAllergenForm.controls.name.dirty">
+      <p>You need to enter a name for the allergen.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Allergen Description</ion-label>
+      <ion-input #name formControlName="description" type="text" placeholder="How to describe this allergen?"
+        [class.invalid]="!newAllergenForm.controls.description.valid && newAllergenForm.controls.description.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message"
+    *ngIf="!newAllergenForm.controls.description.valid && newAllergenForm.controls.description.dirty">
+      <p>You need to enter a description for the allergen.</p>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Create new allergen
+    </button>
+  </form>
+</ion-content>
